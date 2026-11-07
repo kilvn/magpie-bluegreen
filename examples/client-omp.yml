@@ -1,0 +1,11 @@
+# 合并进 ~/.omp/agent/models.yml 的 providers 段
+# 注意：api 是 openai-completions，baseUrl 必须带 /v1
+providers:
+  magpie:
+    api: openai-completions
+    apiKey: <MAGPIE_GATEWAY_KEY>
+    baseUrl: https://gw.example.com/v1
+    models:
+    # id 就是发给网关的模型名，必须是 group/<组名>
+    - id: group/coding
+      name: Coding (auto)

@@ -1,0 +1,21 @@
+{
+  "providers": {
+    "magpie": {
+      "name": "Magpie Gateway",
+      "package": "@opencode/ai/providers/openai-compatible",
+      "settings": {
+        "baseURL": "https://gw.example.com/v1",
+        "apiKey": "<MAGPIE_GATEWAY_KEY>"
+      },
+      "models": {
+        "coding": {
+          "modelID": "group/coding",
+          "name": "Coding（自动路由）",
+          "capabilities": {
+            "tools": true
+          }
+        }
+      }
+    }
+  }
+}
