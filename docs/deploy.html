@@ -367,7 +367,7 @@ curl -s http://127.0.0.1:3430/v1/chat/completions \
 <div class="grid two">
   <div class="card">
     <span class="tag info">如果反代在容器里</span>
-    <p style="margin-bottom:0">反代容器访问不到宿主机的 <code>127.0.0.1</code>。两种写法：把 magpie 加入同一个 docker 网络后用服务名；或让 magpie 绑到 docker 网桥网关 IP（如 <code>172.19.0.1:3430</code>），反代再指向它。</p>
+    <p style="margin-bottom:0">反代容器访问不到宿主机的 <code>127.0.0.1</code>。两种写法：把 magpie 加入同一个 docker 网络后用服务名；或让 magpie 绑到 docker 网桥网关 IP（如 <code>172.17.0.1:3430</code>），反代再指向它。</p>
   </div>
   <div class="card">
     <span class="tag info">如果前面还有 CDN</span>

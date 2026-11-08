@@ -53,6 +53,26 @@ flowchart TD
 两种模式都支持 `proxy`（有反代，零停机）和 `direct`（无反代，切换窗口 1–2 秒）。
 `VHOST` 是否配置决定用哪个。
 
+## 快速体验（自带样例）
+
+仓库内置了一套开箱即用的配置样例，位于 `examples/`：
+
+- `examples/docker-compose.yml` — magpie 独立容器 compose 编排
+- `examples/env.example` — 环境变量样例（控制台密钥、域名、时区）
+- `examples/nginx.conf` — Nginx 反代配置（含流式输出与超时保护）
+- `examples/client-omp.yml` — Oh My Posh / 客户端接入片段
+- `examples/client-opencode.json` — OpenCode 客户端接入片段
+
+```bash
+# 克隆仓库即可直接在 examples/ 目录下启动体验
+git clone https://github.com/kilvn/magpie-bluegreen.git
+cd magpie-bluegreen/examples
+cp env.example .env
+# 生成 32 位控制台密钥填入 .env: openssl rand -hex 16
+sudo chown -R 65532:65532 ./data 2>/dev/null || mkdir -p data && sudo chown -R 65532:65532 data
+docker compose up -d
+```
+
 ## 用法
 
 ```bash

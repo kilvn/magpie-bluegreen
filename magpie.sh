@@ -790,6 +790,43 @@ do_retention() {
 do_export() { # $1=目标目录
     local out="${1:-./magpie-examples}"
     mkdir -p "$out" || return 1
+    cat >"$out/docker-compose.yml" <<'COMPOSE'
+name: magpie
+
+services:
+  magpie:
+    image: ghcr.io/yetone/magpie:latest
+    container_name: magpie
+    restart: always
+    command: ["web", "--addr", "0.0.0.0:3430", "--no-open"]
+    ports:
+      - "127.0.0.1:3430:3430"
+      - "127.0.0.1:3425:3425"
+    volumes:
+      - ./data:/config
+    environment:
+      MAGPIE_ADDR: 0.0.0.0:3425
+      MAGPIE_PUBLIC_URL: ${MAGPIE_PUBLIC_URL:-}
+      MAGPIE_WEB_KEY: ${MAGPIE_WEB_KEY:-}
+      TZ: ${TZ:-Asia/Shanghai}
+      HOME: /config/home
+      XDG_CONFIG_HOME: /config
+      XDG_CACHE_HOME: /config/cache
+      XDG_DATA_HOME: /config/data
+      XDG_STATE_HOME: /config/state
+    healthcheck:
+      test: ["CMD", "/magpie", "healthcheck"]
+      interval: 30s
+      timeout: 5s
+      start_period: 10s
+      retries: 3
+COMPOSE
+    cat >"$out/env.example" <<'ENVEX'
+# 控制台密钥（至少 16 字符）：openssl rand -hex 16
+MAGPIE_WEB_KEY=
+MAGPIE_PUBLIC_URL=https://gw.example.com
+TZ=Asia/Shanghai
+ENVEX
     cat >"$out/nginx.conf" <<'NGINX'
 # magpie 反代（Cloudflare 橙云场景）
 # 要点：1) 只代理 3430（控制台 / 与网关 /v1 同端口）
