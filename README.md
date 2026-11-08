@@ -140,6 +140,21 @@ JSON 先校验再原子替换，`providers.json` 额外校验供应商数量下�
 | direct 模式窗口内客户端报错 | 预期内，原位重建 1–2 秒。要零停机请配 `VHOST` |
 | 升级后凭证丢失 | 看日志里「跳过合并」行，检查 `DATA_DIR` 是否指向正确的宿主机目录 |
 
+## 部署指南（H5）
+
+移动端友好的单页部署教程，可直接分享：
+
+- [`docs/docker-compose-deploy.html`](docs/docker-compose-deploy.html) — docker-compose 从零部署（含反代流式要点、MCP 运行时、升级策略、排错）
+
+本地预览：
+
+```bash
+open docs/docker-compose-deploy.html          # macOS
+xdg-open docs/docker-compose-deploy.html      # Linux
+```
+
+开启 GitHub Pages（Settings → Pages → Source: `master` / `/docs`）即可获得可分享链接。
+
 ## License
 
 [MIT](LICENSE)
