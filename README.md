@@ -144,13 +144,15 @@ JSON 先校验再原子替换，`providers.json` 额外校验供应商数量下�
 
 移动端友好的单页部署教程，可直接分享：
 
-- [`docs/index.html`](docs/index.html) — docker-compose 从零部署（含反代流式要点、MCP 运行时、升级策略、排错）
+- [`docs/index.html`](docs/index.html) — **站点主页**：蓝绿流程、双模式、配置与设计取舍
+- [`docs/deploy.html`](docs/deploy.html) — **子页面**：docker-compose 从零部署（含反代流式要点、MCP 运行时、排错）
 
 本地预览：
 
 ```bash
-open docs/index.html          # macOS
-xdg-open docs/index.html      # Linux
+open docs/index.html          # 主页
+open docs/deploy.html         # 部署指南
+# Linux 用 xdg-open
 ```
 
 开启 GitHub Pages（Settings → Pages → Source: `master` / `/docs`）即可获得可分享链接。
