@@ -522,16 +522,26 @@ magpie.sh --export ./out    # 导出 nginx / 客户端样例</code></pre>
 </table>
 
 <h2>想先把 magpie 跑起来？</h2>
-<p class="lead">这个仓库只管升级，不含部署。从零安装请看配套指南。</p>
+<p class="lead">这个仓库的核心是蓝绿无感升级。如果需要从零开始安装 magpie，可以使用仓库内置的完整编排样例或阅读配套部署文档：</p>
 
-<a class="subpage" href="deploy.html">
-  <div class="ic">📦</div>
-  <div class="tx">
-    <b>magpie docker-compose 部署指南</b>
-    <span>一个 compose 文件 + 一个数据目录，从零到可用的网关。含反代流式配置、MCP 运行时挂载、升级策略与排错。</span>
-  </div>
-  <div class="ar">→</div>
-</a>
+<div class="grid two" style="margin-top: 14px;">
+  <a class="subpage" href="deploy.html" style="margin: 0;">
+    <div class="ic">📖</div>
+    <div class="tx">
+      <b>docker-compose 部署指南</b>
+      <span>从零到可用的完整图文指引（含属主权限、反代配置、MCP 运行时挂载与排错速查）。</span>
+    </div>
+    <div class="ar">→</div>
+  </a>
+  <a class="subpage" href="https://github.com/kilvn/magpie-bluegreen/tree/master/examples" target="_blank" rel="noopener" style="margin: 0;">
+    <div class="ic">📂</div>
+    <div class="tx">
+      <b>examples/ 预设样例目录</b>
+      <span>开箱即用的 <code>docker-compose.yml</code>、<code>env.example</code>、<code>nginx.conf</code> 与客户端配置片段。</span>
+    </div>
+    <div class="ar">↗</div>
+  </a>
+</div>
 
 <footer>
   <p>MIT License · <a href="https://github.com/kilvn/magpie-bluegreen">github.com/kilvn/magpie-bluegreen</a></p>
