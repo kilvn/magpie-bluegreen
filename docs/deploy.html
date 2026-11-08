@@ -189,7 +189,7 @@ body{transition:background-color .2s ease,color .2s ease}
   <thead><tr><th>项目</th><th>要求</th></tr></thead>
   <tbody>
     <tr><td>Docker</td><td>20.10+，能拉 <code>ghcr.io</code> 镜像</td></tr>
-    <tr><td>Compose</td><td>v2 插件（<code>docker compose</code> 而不是 <code>docker-compose</code>）</td></tr>
+    <tr><td>Compose</td><td>v2（推荐 <code>docker compose</code>）或 v1（兼容 <code>docker-compose</code>）</td></tr>
     <tr><td>磁盘</td><td>≥ 2 GB（镜像约 200 MB，Playwright 浏览器另占 400 MB）</td></tr>
     <tr><td>内存</td><td>≥ 512 MB</td></tr>
     <tr><td>架构</td><td>amd64 / arm64 都有官方镜像</td></tr>
@@ -197,7 +197,8 @@ body{transition:background-color .2s ease,color .2s ease}
 </table>
 
 <pre><code>docker --version
-docker compose version    # 需要 v2，输出形如 Docker Compose version v2.x</code></pre>
+# 检查 Compose 版本（两者均可运行）：
+docker compose version || docker-compose --version</code></pre>
 
 <h2 id="quick">三分钟起步</h2>
 

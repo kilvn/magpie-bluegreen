@@ -263,10 +263,22 @@ mount_args_for() { # 结果放进全局 MOUNT_ARGS
     done
 }
 
+# 兼容 docker compose (v2) 与 docker-compose (v1)
+run_compose() {
+    if docker compose version >/dev/null 2>&1; then
+        docker compose "$@"
+    elif command -v docker-compose >/dev/null 2>&1; then
+        docker-compose "$@"
+    else
+        say "未找到 docker compose 或 docker-compose 命令行工具"
+        return 127
+    fi
+}
+
 container_recreate() { # $1=镜像（默认 $IMAGE；direct 回滚时传旧镜像 ID）
     local img="${1:-$IMAGE}"
     if [ "$MODE" = "compose" ]; then
-        ( cd "${COMPOSE_DIR:-.}" && docker compose ${COMPOSE_FILE:+-f "$COMPOSE_FILE"} \
+        ( cd "${COMPOSE_DIR:-.}" && run_compose ${COMPOSE_FILE:+-f "$COMPOSE_FILE"} \
             up -d --no-deps --force-recreate "$COMPOSE_SERVICE" >/dev/null 2>&1 )
         return $?
     fi
